@@ -3,7 +3,7 @@ import { IsString } from "class-validator";
 
 export class UpdateStudentNameDto {
     
-    @ApiProperty({example: 'Ina', description: 'The title of the Student'})
+    @ApiProperty({example: 'Ina'})
     @IsString()
     name: string;
 }

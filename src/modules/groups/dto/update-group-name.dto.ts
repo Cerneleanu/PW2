@@ -1,9 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString } from "class-validator";
 
-export class UpdateStudentNameDto {
+export class UpdateGroupNameDto {
     
-    @ApiProperty({example: 'Ina', description: 'The title of the Student'})
+    @ApiProperty({example: 'IT11Z'})
     @IsString()
     name: string;
 }
