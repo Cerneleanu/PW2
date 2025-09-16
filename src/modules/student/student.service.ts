@@ -8,7 +8,7 @@ import e from "express";
 export class StudentService {
     constructor(private StudentRepository: StudentRepository
         , private groupRepository: GroupRepository
-    ) {}
+    ) { }
 
     getAllStudent() {
         return this.StudentRepository.getAllStudent();
@@ -23,17 +23,24 @@ export class StudentService {
     }
 
     createStudent(createStudentDto: CreateStudentDto) {
-        if ( !this.groupRepository.getGroupById(createStudentDto.groupid.toString()) ) {
+        if (!this.groupRepository.getGroupById(createStudentDto.groupid.toString())) {
             throw new HttpException('Group not found', HttpStatus.NOT_FOUND);
         }
-        return this.StudentRepository.createStudent(createStudentDto.name, createStudentDto.surname, createStudentDto.age, createStudentDto.phone, createStudentDto.email, createStudentDto.address, createStudentDto.groupid);
+        return this.StudentRepository.createStudent(createStudentDto.name, 
+            createStudentDto.surname, 
+            createStudentDto.age, 
+            createStudentDto.phone, 
+            createStudentDto.email, 
+            createStudentDto.address, 
+            createStudentDto.groupid, 
+            createStudentDto.marks);
     }
 
     updateStudent(id: string, updateStudentDto: CreateStudentDto) {
         const Student = this.getStudentById(id);
         if (!Student) {
             throw new HttpException('Student not found', HttpStatus.NOT_FOUND);
-        } else if ( !this.groupRepository.getGroupById(updateStudentDto.groupid.toString()) ) {
+        } else if (!this.groupRepository.getGroupById(updateStudentDto.groupid.toString())) {
             throw new HttpException('Group not found', HttpStatus.NOT_FOUND);
         }
         return this.StudentRepository.updateStudent(id, updateStudentDto);

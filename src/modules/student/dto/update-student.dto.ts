@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 
 export class UpdateStudentDto {
 
@@ -27,7 +27,11 @@ export class UpdateStudentDto {
     @IsString()
     address: string;
 
-    @ApiProperty({example: 'Grosu 1'})
+    @ApiProperty({example: '1'})
     @IsString()
     groupid: number;
+
+    @ApiProperty({example: '1 , 2'})
+    @IsNumber()
+    marks: number[];
 }

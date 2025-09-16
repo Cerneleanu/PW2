@@ -16,15 +16,15 @@ export class StudentRepository {
 
     private initializeStudent() {
         this.Student = [
-            { id: 1, name: 'Ion', surname: 'Griu', age: 21, phone: '1010101010', email: 'IG@gmail.com', address: 'cosbuc 1', groupid: 1 },
-            { id: 2, name: 'Ion', surname: 'Cioban', age: 20, phone: '1111111111', email: 'IC@gmail.com', address: 'cosbuc 2', groupid: 2 }
+            { id: 1, name: 'Ion', surname: 'Griu', age: 21, phone: '1010101010', email: 'IG@gmail.com', address: 'cosbuc 1', groupid: 1, marks: [9, 7] },
+            { id: 2, name: 'Ion', surname: 'Cioban', age: 20, phone: '1111111111', email: 'IC@gmail.com', address: 'cosbuc 2', groupid: 2, marks: [8, 5] },
         ];
         this.loadGroups();
     }
 
     private loadGroups() {
         try {
-            const groups = this.groupRepository.getAllGroup();
+            const groups: Group[] = this.groupRepository.getAllGroup();
             this.Groups = groups.reduce<{ [key: number]: string }>((objectgroup, group) => {
                 objectgroup[group.id] = group.name;
                 return objectgroup;
@@ -57,11 +57,12 @@ export class StudentRepository {
         phone: string,
         email: string,
         address: string,
-        groupid: number) {
+        groupid: number,
+        marks: number[]) {
         this.loadGroups();
         const newStudent = {
             id: this.Student.length + 1,
-            name, surname, age, phone, email, address, groupid
+            name, surname, age, phone, email, address, groupid, marks
         };
         const groupExists = this.Groups[newStudent.groupid] !== undefined;
         if (!groupExists) {

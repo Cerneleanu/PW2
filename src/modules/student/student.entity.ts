@@ -6,6 +6,7 @@ export class Student {
     phone: string;
     email: string;
     address: string;
-    groupid: number
+    groupid: number;
+    marks: number[];
 
 }
