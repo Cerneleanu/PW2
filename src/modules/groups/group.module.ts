@@ -12,7 +12,7 @@ import { StudentModule } from "../student/student.module";
     ],
     exports : [
         GroupService,
-        GroupModule
+        GroupRepository
     ]
 })
 export class GroupModule {}

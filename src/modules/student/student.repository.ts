@@ -3,6 +3,7 @@ import { CreateStudentDto } from "./dto/create-student.dto";
 import { Student } from "./student.entity";
 import { UpdateStudentDto } from "./dto/update-student.dto";
 import { GroupRepository } from "../groups/group.repository";
+import { Group } from "../groups/group.entity";
 
 @Injectable()
 export class StudentRepository {
