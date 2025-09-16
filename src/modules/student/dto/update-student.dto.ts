@@ -26,4 +26,8 @@ export class UpdateStudentDto {
     @ApiProperty({example: 'Grosu 1'})
     @IsString()
     address: string;
+
+    @ApiProperty({example: 'Grosu 1'})
+    @IsString()
+    groupid: number;
 }

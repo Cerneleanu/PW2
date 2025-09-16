@@ -27,4 +27,8 @@ export class CreateStudentDto {
     @IsString()
     address: string;
 
+    @ApiProperty({example: ' 1'})
+    @IsString()
+    groupid: number;
+
 }

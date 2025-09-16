@@ -6,5 +6,6 @@ export class Student {
     phone: string;
     email: string;
     address: string;
+    groupid: number
 
 }

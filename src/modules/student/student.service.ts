@@ -19,7 +19,7 @@ export class StudentService {
     }
 
     createStudent(createStudentDto: CreateStudentDto) {
-        return this.StudentRepository.createStudent(createStudentDto.name, createStudentDto.surname, createStudentDto.age, createStudentDto.phone, createStudentDto.email, createStudentDto.address);
+        return this.StudentRepository.createStudent(createStudentDto.name, createStudentDto.surname, createStudentDto.age, createStudentDto.phone, createStudentDto.email, createStudentDto.address, createStudentDto.groupid);
     }
 
     updateStudent(id: string, updateStudentDto: CreateStudentDto) {
