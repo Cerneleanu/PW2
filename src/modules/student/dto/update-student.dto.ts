@@ -34,4 +34,8 @@ export class UpdateStudentDto {
     @ApiProperty({example: '1 , 2'})
     @IsNumber()
     marks: number[];
+
+    @ApiProperty({example: '0'})
+    @IsNumber()
+    averagemark: number;
 }

@@ -14,11 +14,24 @@ export class StudentRepository {
         this.initializeStudent();
     }
 
+    private averageMark(marks: number[]): number {
+        if (!Array.isArray(marks) || marks.length === 0) return 0;
+        if (marks.some(mark => typeof mark !== 'number' || isNaN(mark))) {
+            throw new Error('Marks must be an array of valid numbers');
+        }
+        const sum = marks.reduce((acc, mark) => acc + mark, 0);
+        return parseFloat((sum / marks.length).toFixed(2));
+    }
+
     private initializeStudent() {
         this.Student = [
-            { id: 1, name: 'Ion', surname: 'Griu', age: 21, phone: '1010101010', email: 'IG@gmail.com', address: 'cosbuc 1', groupid: 1, marks: [9, 7] },
-            { id: 2, name: 'Ion', surname: 'Cioban', age: 20, phone: '1111111111', email: 'IC@gmail.com', address: 'cosbuc 2', groupid: 2, marks: [8, 5] },
+            { id: 1, name: 'Ion', surname: 'Griu', age: 21, phone: '1010101010', email: 'IG@gmail.com', address: 'cosbuc 1', groupid: 1, marks: [9, 7], averagemark: 0  },
+            { id: 2, name: 'Ion', surname: 'Cioban', age: 20, phone: '1111111111', email: 'IC@gmail.com', address: 'cosbuc 2', groupid: 2, marks: [8, 5], averagemark: 0  },
         ];
+        this.Student = this.Student.map(student => ({
+            ...student,
+            averagemark: this.averageMark(student.marks)
+        }));
         this.loadGroups();
     }
 
@@ -58,11 +71,13 @@ export class StudentRepository {
         email: string,
         address: string,
         groupid: number,
-        marks: number[]) {
+        marks: number[],
+    ) {
         this.loadGroups();
+        const averagemark = this.averageMark(marks);
         const newStudent = {
             id: this.Student.length + 1,
-            name, surname, age, phone, email, address, groupid, marks
+            name, surname, age, phone, email, address, groupid, marks, averagemark
         };
         const groupExists = this.Groups[newStudent.groupid] !== undefined;
         if (!groupExists) {

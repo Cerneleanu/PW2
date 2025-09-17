@@ -8,5 +8,6 @@ export class Student {
     address: string;
     groupid: number;
     marks: number[];
+    averagemark: number;
 
 }

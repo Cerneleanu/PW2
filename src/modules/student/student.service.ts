@@ -33,7 +33,7 @@ export class StudentService {
             createStudentDto.email, 
             createStudentDto.address, 
             createStudentDto.groupid, 
-            createStudentDto.marks);
+            createStudentDto.marks,);
     }
 
     updateStudent(id: string, updateStudentDto: CreateStudentDto) {

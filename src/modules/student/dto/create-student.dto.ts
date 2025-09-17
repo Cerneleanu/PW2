@@ -31,8 +31,11 @@ export class CreateStudentDto {
     @IsString()
     groupid: number;
 
-    @ApiProperty({example: '1, 2'})
+    @ApiProperty({example: [1, 2]})
     @IsNumber()
     marks: number[];
 
+    @ApiProperty({example: '0'})
+    @IsNumber()
+    averagemark: number;
 }
